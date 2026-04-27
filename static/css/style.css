@@ -1,0 +1,11 @@
+.glass { background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(125, 211, 252, 0.4); border-radius: 1rem; }
+.card { background: rgba(15, 23, 42, 0.72); border: 1px solid rgba(148, 163, 184, 0.35); border-radius: 0.9rem; padding: 1rem; }
+.chip { display: inline-block; background: linear-gradient(90deg,#22d3ee,#a78bfa); color: #020617; font-weight: 700; border-radius: 999px; padding: 0.3rem 0.75rem; }
+.btn-primary { background: linear-gradient(90deg,#22d3ee,#818cf8,#e879f9); color: #020617; font-weight: 700; border-radius: 0.75rem; padding: 0.6rem 1rem; }
+.btn-secondary { border: 1px solid rgba(125, 211, 252, 0.55); color: #e2e8f0; font-weight: 600; border-radius: 0.75rem; padding: 0.6rem 1rem; }
+.ad-box { border: 2px dashed rgba(250, 204, 21, 0.8); border-radius: 0.75rem; padding: 1rem; text-align: center; background: rgba(51, 65, 85, 0.55); cursor: pointer; }
+.fade-up { animation: fadeUp 0.9s ease both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}

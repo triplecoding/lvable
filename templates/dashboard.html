@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="max-w-6xl mx-auto p-6">
+  <h1 class="text-3xl font-bold">Product Dashboard</h1>
+  <div class="grid md:grid-cols-3 gap-4 mt-6">
+    <div class="card">Documents Opened: 128</div>
+    <div class="card">Avg Time on PDF: 4m 12s</div>
+    <div class="card">Signature Completion: 89%</div>
+  </div>
+  <div class="ad-box mt-6" onclick="trackAdEvent('dashboard_banner')">Google Ads Placement: Dashboard Banner</div>
+</main>
+{% endblock %}
