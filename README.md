@@ -1,92 +1,55 @@
-# HeyMariner: Vercel + Neon Ready Platform
-
-This project supports two database modes:
-1. **Neon Postgres (recommended for Vercel production)** via `DATABASE_URL`
-2. **Mongo fallback** for local/testing if `DATABASE_URL` is not set
-
----
-
-## Activate site on Vercel with Neon (production)
-
-### 1) Create Neon database
-- Sign in to [neon.com](https://neon.com)
-- Create project + database
-- Copy connection string (`postgresql://...sslmode=require`)
-
-### 2) Push code to GitHub
-- Commit and push this repo to your GitHub org/user.
-
-### 3) Import project in Vercel
-- In [vercel.com](https://vercel.com), click **Add New Project**
-- Import your GitHub repo
-- Framework preset: **Next.js**
-
-### 4) Add Environment Variables in Vercel
-Set in **Project → Settings → Environment Variables**:
-- `DATABASE_URL` = your Neon connection string
-- `NEXT_PUBLIC_API_BASE_URL` = `https://<your-domain>/api/v1`
-- `RESEND_API_KEY` (optional for emails)
-- `RESEND_FROM_EMAIL` (optional)
-
-> Keep `MONGODB_URI` unset in Vercel if you want pure Neon mode.
-
-### 5) Deploy
-- Click **Deploy**.
-- First request auto-creates tables and seeds content into Neon.
-
-### 6) Verify live endpoints
-After deploy, test:
-- `https://<your-domain>/api/v1?action=slides`
-- `https://<your-domain>/api/v1?action=articles_latest`
-- `https://<your-domain>/api/v1?action=ports`
-
-If these return JSON, site is activated.
-
----
-
-## Local Development
-
-```bash
-cp .env.example .env.local
-npm install
-npm run dev
-```
-
-For local Neon mode, set `DATABASE_URL` in `.env.local`.
-For Mongo mode, leave `DATABASE_URL` empty and set `MONGODB_URI`.
-
----
-
-## Unified API (One API)
-All frontend requests use `GET/POST /api/v1` with `action`.
-
-GET actions:
-- `slides`
-- `articles`, `articles_latest`, `article_by_slug&slug=...`
-- `pdfs`, `pdfs_featured`, `pdf_by_id&id=...`
-- `calculators`
-- `ports`, `port_by_slug&slug=...`
-- `news`
-- `impa_codes` (150 listing)
-- `dashboard`
-
-POST actions:
-- `register`
-- `login`
-- `chat`
-
----
-
-## SEO / AEO / GEO
-- Metadata helper: `lib/seo.ts`
-- JSON-LD component: `components/SchemaScript.tsx`
-- FAQ schema + article schema
-- `app/sitemap.ts` and `app/robots.ts`
-
----
-
-## Notes for production hardening
-- Move content from `content_store` JSON buckets to normalized SQL tables over time.
-- Add auth tokens/session management.
-- Add cron for scraping + automated content moderation.
-- Add analytics for user behavior segmentation.
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..5784319ae13448a56d021d0993c6b7c87588b473
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,49 @@
++# DC PDF Editor (A→Z SaaS Starter)
++
++A production-ready starter architecture for an AI-first PDF web platform with responsive frontend, SEO/legal page content, ad placement zones, and Python APIs for auth + AI/PDF processing.
++
++## What is implemented now
++
++- FastAPI backend with JWT email/password auth.
++- OAuth provider stubs for Google, Facebook, and Apple login.
++- AI endpoints (chat, summarize, rewrite) with OpenAI integration and local fallback logic.
++- PDF text extraction endpoint (using pdfplumber).
++- Contact email API via Resend: `POST /api/contact/send`.
++- Responsive animated pages with colorful UI.
++- SEO foundations: canonical links, OpenGraph, JSON-LD schema (Organization + geo), Search Console and Bing verification tags.
++- Legal pages: privacy policy, terms, cookie policy, disclaimer, refund policy.
++- Google Ads placeholders + API-based ad click/download event tracking.
++- Integrations page for GTM/GA/Search Console/Bing setup.
++- Deploy-ready Vercel serverless entrypoint + GitHub Actions deploy workflow.
++
++## Quick start
++
++```bash
++python -m venv .venv
++source .venv/bin/activate
++pip install -r requirements.txt
++uvicorn app.main:app --reload
++```
++
++Open:
++
++- Home: http://127.0.0.1:8000/
++- SEO Article: http://127.0.0.1:8000/articles/pdf-ai-seo-guide
++- Integrations: http://127.0.0.1:8000/integrations
++- Legal: `/legal/*`
++- Healthcheck: `/health`
++
++## Deploy from GitHub
++
++See `DEPLOYMENT.md` for complete Vercel + Neon + Resend setup.
++
++Required environment variables are listed in `.env.example`.
++
++## Suggested next build phases
++
++1. Real OAuth flow via Authlib callbacks.
++2. Document storage with S3/R2 and signed URLs.
++3. WebSocket collaboration and inline comments.
++4. E-sign workflow + audit trails.
++5. OCR pipeline (Tesseract/Textract), table extraction, and conversion microservices.
++6. Team billing and entitlement gates.
