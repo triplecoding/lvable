@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ app_name }} is an AI-first cloud PDF editor with OCR, e-sign, automation, and collaboration." />
+  <meta name="google-site-verification" content="{{ google_site_verification }}" />
+  <meta name="msvalidate.01" content="{{ bing_site_verification }}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site_url }}{{ request.url.path }}" />
+  <meta property="og:description" content="Secure AI-powered PDF operations for business teams." />
+  <link rel="canonical" href="{{ site_url }}{{ request.url.path }}" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ ga_measurement_id }}');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_measurement_id }}"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ company_name }}",
+    "url": "{{ site_url }}",
+    "email": "{{ support_email }}",
+    "areaServed": "US",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "37.7749",
+      "longitude": "-122.4194"
+    }
+  }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-fuchsia-950 text-slate-100 min-h-screen">
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ gtm_id }}');</script>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <header class="sticky top-0 z-50 backdrop-blur border-b border-slate-700/60 bg-slate-900/70">
+    <nav class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="font-extrabold text-cyan-300">{{ app_name }}</a>
+      <div class="hidden md:flex gap-5 text-sm">
+        <a href="/">Home</a>
+        <a href="/articles/pdf-ai-seo-guide">Article</a>
+        <a href="/integrations">Integrations</a>
+        <a href="/dashboard">Dashboard</a>
+      </div>
+      <a href="/legal/privacy-policy" class="btn-primary text-xs md:text-sm">Legal</a>
+    </nav>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer class="border-t border-slate-700/60 mt-16">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-6 text-sm">
+      <div>
+        <p class="font-semibold">{{ company_name }}</p>
+        <p class="text-slate-300 mt-2">AI-first cloud PDF platform built for speed and compliance.</p>
+      </div>
+      <div>
+        <p class="font-semibold">Legal</p>
+        <div class="mt-2 space-y-1 text-slate-300">
+          <a class="block" href="/legal/privacy-policy">Privacy Policy</a>
+          <a class="block" href="/legal/terms-and-conditions">Terms</a>
+          <a class="block" href="/legal/cookie-policy">Cookie Policy</a>
+          <a class="block" href="/legal/disclaimer">Disclaimer</a>
+          <a class="block" href="/legal/refund-policy">Refund Policy</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-semibold">Tools</p>
+        <div class="mt-2 space-y-1 text-slate-300">
+          <a class="block" href="/integrations">GTM / Analytics</a>
+          <a class="block" href="/ads.txt">ads.txt</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-semibold">Contact</p>
+        <p class="text-slate-300 mt-2">{{ support_email }}</p>
+      </div>
+    </div>
+  </footer>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
