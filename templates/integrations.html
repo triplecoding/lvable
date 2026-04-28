@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="max-w-5xl mx-auto p-6 md:p-10">
+  <h1 class="text-3xl font-bold">Google/Bing Integrations Setup</h1>
+  <p class="mt-3 text-slate-200">This page centralizes setup values for Google Tag Manager, Google Analytics, Search Console, and Bing Webmaster Tools.</p>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="card">
+      <h2 class="text-xl font-semibold">Google Tag Manager</h2>
+      <p class="text-slate-300 mt-2">Configured ID: <code>{{ gtm_id }}</code></p>
+      <p class="text-slate-300 mt-2">Replace in `.env` for production.</p>
+    </div>
+    <div class="card">
+      <h2 class="text-xl font-semibold">Google Analytics</h2>
+      <p class="text-slate-300 mt-2">Measurement ID: <code>{{ ga_measurement_id }}</code></p>
+      <p class="text-slate-300 mt-2">Events: ad-click and download actions can be sent via API.</p>
+    </div>
+    <div class="card">
+      <h2 class="text-xl font-semibold">Search Console</h2>
+      <p class="text-slate-300 mt-2">Meta verification included in global head.</p>
+    </div>
+    <div class="card">
+      <h2 class="text-xl font-semibold">Bing Webmaster Tools</h2>
+      <p class="text-slate-300 mt-2">Bing verification meta included in global head.</p>
+    </div>
+  </div>
+
+  <div class="ad-box mt-6" onclick="trackAdEvent('integration_bottom')">Google Ads Placement: Bottom Leaderboard</div>
+</main>
+{% endblock %}
